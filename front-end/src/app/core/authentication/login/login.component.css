@@ -1,0 +1,13 @@
+
+.container{
+  height: 100%;
+  align-content: center;
+  }
+
+  .error-padding {
+    margin-left: 2.7rem!important
+  }
+
+  :host ::ng-deep p-card  {
+    width:80%!important;
+  }

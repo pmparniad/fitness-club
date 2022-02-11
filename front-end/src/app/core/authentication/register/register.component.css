@@ -1,0 +1,10 @@
+
+.container{
+  height: 100%;
+  align-content: center;
+  }
+
+
+  :host ::ng-deep p-card  {
+    width:80%!important;
+  }

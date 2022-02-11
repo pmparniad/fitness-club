@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="d-flex justify-content-center h-100 w-100">
+    <p-card>
+      <ng-template pTemplate="header">
+        <div class="d-flex justify-content-center mt-5">
+          <h2> Login </h2>
+          <hr/>
+        </div>
+      </ng-template>
+      <div [formGroup]="loginForm">
+        <div class="row justify-content-center">
+          <div class="col-10 md:col-4">
+            <div class="row">
+              <div class="col-12">
+                <div class="p-inputgroup">
+                  <span class="p-inputgroup-addon">
+                    <i class="pi pi-user"></i>
+                  </span>
+                  <span class="p-float-label">
+                    <input id="login_username" type="username" pInputText formControlName="username" />
+                    <label for="username">Username</label>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <small class="p-error error-padding" *ngIf="loginForm?.controls?.['username']?.dirty &&
+                loginForm?.controls?.['username']?.errors?.['required']">
+                  This field is required
+                </small>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12">
+                <div class="p-inputgroup">
+                  <span class="p-inputgroup-addon">
+                    <i class="pi pi-key"></i>
+                  </span>
+                  <span class="p-float-label">
+                    <input id="login_password" type="password" pInputText formControlName="password"
+                      name="login_password" />
+                    <label for="login_password" class="block">Password</label>
+                  </span>
+                </div>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <small class="p-error error-padding" *ngIf="loginForm?.controls?.['password']?.dirty &&
+                loginForm?.controls?.['password']?.errors?.['required']">
+                  This field is required
+                </small>
+              </div>
+            </div>
+            <div class="row mt-5">
+              <div class="col-12">
+                <div class="d-flex justify-content-center">
+                  <p> Don't have an account? <a [routerLink]="['/register']"> Sign Up </a> </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <div class="d-flex justify-content-end mt-5">
+        <button [disabled]="!loginForm.valid" pButton (click)="onLoginClick()"> Submit </button>
+        </div>
+      </ng-template>
+    </p-card>
+
+
+  </div>

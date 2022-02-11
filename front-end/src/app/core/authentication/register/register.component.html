@@ -1,0 +1,154 @@
+<div class="container">
+  <div class="d-flex justify-content-center h-100">
+    <p-card >
+      <ng-template pTemplate="header">
+        <div class="d-flex justify-content-center mt-5">
+          <h2> Register </h2>
+          <hr />
+        </div>
+      </ng-template>
+      <div [formGroup]="registerForm">
+        <div class="row justify-content-center">
+          <div class="col-10 md:col-4">
+            <div class="row">
+              <div class="col-12">
+                <div class="p-inputgroup">
+                  <span class="p-float-label">
+                    <input id="register_fullName" type="name" pInputText formControlName="full_name" />
+                    <label for="register_fullName">Full Name</label>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <small class="p-error" *ngIf="registerForm?.controls?.['full_name']?.dirty &&
+                registerForm?.controls?.['full_name']?.errors?.['required']">
+                  This field is required
+                </small>
+                <small class="p-error" *ngIf="registerForm?.controls?.['full_name']?.dirty &&
+                registerForm?.controls?.['full_name']?.errors?.['pattern']">
+                  Please enter a valid name
+                </small>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12">
+                <div class="p-inputgroup">
+                  <span class="p-float-label">
+                    <input id="register_username" type="name" pInputText formControlName="username" />
+                    <label for="register_username">Username</label>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <small class="p-error" *ngIf="registerForm?.controls?.['username']?.dirty &&
+                registerForm?.controls?.['username']?.errors?.['required']">
+                  This field is required
+                </small>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12">
+                <div class="p-inputgroup">
+                  <span class="p-float-label">
+                    <input id="register_email" type="email" pInputText formControlName="email" />
+                    <label for="register_email">Email</label>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <small class="p-error" *ngIf="registerForm?.controls?.['email']?.dirty &&
+                          registerForm?.controls?.['email']?.errors?.['required']">
+                  This field is required
+                </small>
+                <small class="p-error" *ngIf="registerForm?.controls?.['email']?.dirty &&
+                          registerForm?.controls?.['email']?.errors?.['email']">
+                  Please enter a valid email
+                </small>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12">
+                <div class="p-inputgroup">
+                  <span class="p-float-label">
+                    <input id="register_phone" type="number" pInputText formControlName="phoneNumber" />
+                    <label for="register_phone">Phone number</label>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <small class="p-error" *ngIf="registerForm?.controls?.['phoneNumber']?.dirty &&
+                            registerForm?.controls?.['phoneNumber']?.errors?.['required']">
+                  This field is required
+                </small>
+                <small class="p-error" *ngIf="registerForm?.controls?.['phoneNumber']?.dirty &&
+                            registerForm?.controls?.['phoneNumber']?.errors?.['pattern']">
+                  Please enter a valid phone number
+                </small>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12">
+                <div class="p-inputgroup">
+                  <span class="p-float-label">
+                    <input id="register_password" type="password" pInputText formControlName="password" />
+                    <label for="register_password">Password</label>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <small class="p-error" *ngIf="registerForm?.controls?.['password']?.dirty &&
+                                        registerForm?.controls?.['password']?.errors?.['required']">
+                  This field is required
+                </small>
+                <small class="p-error" *ngIf="registerForm?.controls?.['password']?.dirty &&
+                                        registerForm?.controls?.['password']?.errors?.['minlength']">
+                  Password must have at least 5 characters.
+                  Characters provided: {{ registerForm?.controls?.['password']?.errors?.['minlength']['actualLength'] }}
+                </small>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12">
+                <div class="p-inputgroup">
+                  <span class="p-float-label">
+                    <input [ngClass]="registerForm?.errors?.['notSame'] ? 'ng-invalid' : ''"
+                      id="register_password_confirm" type="password" pInputText formControlName="confirmPassword" />
+                    <label for="register_password_confirm">Confirm password</label>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <small class="p-error" *ngIf="registerForm?.controls?.['confirmPassword']?.dirty &&
+                                          registerForm?.controls?.['confirmPassword']?.errors?.['required']">
+                  This field is required
+                </small>
+                <small class="p-error" *ngIf="registerForm?.controls?.['confirmPassword']?.dirty &&
+                                         !registerForm?.controls?.['confirmPassword']?.errors?.['required'] &&
+                                          registerForm?.errors?.['notSame']">
+                  Passwords do not match
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <div class="d-flex justify-content-end mt-5">
+          <button [disabled]="!registerForm.valid" pButton (click)="onRegisterClick()"> Register </button>
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+</div>
